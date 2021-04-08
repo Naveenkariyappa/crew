@@ -1,17 +1,17 @@
-import React, { Component } from "react";
-import "./App.css";
-import { Route, Switch, Redirect } from "react-router-dom";
-import Homepage from "./pages/homepage/Homepage.component";
-import ShopPage from "./pages/shop/shop.component";
-import SigninAndSignup from "./pages/signin-and-signup/signin-and-signup.component";
-import CheckoutPage from "./pages/checkout/checkout.component";
-import Header from "./components/header/Header.component";
+import React, { Component } from 'react';
+import './App.css';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import Homepage from './pages/homepage/Homepage.component';
+import ShopPage from './pages/shop/shop.component';
+import SigninAndSignup from './pages/signin-and-signup/signin-and-signup.component';
+import CheckoutPage from './pages/checkout/checkout.component';
+import Header from './components/header/Header.component';
 
-import { auth, createUserProfileDocument } from "./firebase/firebasae.utils";
-import { connect } from "react-redux";
-import { setCurrentUser } from "./redux/user/user.actions";
-import { selectCurrentUser } from "./redux/user/user.selectors";
-import { createStructuredSelector } from "reselect";
+import { auth, createUserProfileDocument } from './firebase/firebasae.utils';
+import { connect } from 'react-redux';
+import { setCurrentUser } from './redux/user/user.actions';
+import { selectCurrentUser } from './redux/user/user.selectors';
+import { createStructuredSelector } from 'reselect';
 class App extends Component {
   unsubscribeFromAuth = null;
   componentDidMount() {
@@ -39,14 +39,14 @@ class App extends Component {
       <div>
         <Header />
         <Switch>
-          <Route exact path="/" component={Homepage} />
-          <Route exact path="/shop" component={ShopPage} />
-          <Route exact path="/checkout" component={CheckoutPage} />
+          <Route exact path='/' component={Homepage} />
+          <Route path='/shop' component={ShopPage} />
+          <Route exact path='/checkout' component={CheckoutPage} />
           <Route
             exact
-            path="/signin"
+            path='/signin'
             render={() =>
-              this.props.currentUser ? <Redirect to="/" /> : <SigninAndSignup />
+              this.props.currentUser ? <Redirect to='/' /> : <SigninAndSignup />
             }
           />
         </Switch>
